@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" routerLink="/">
+        <img src="../assets/images/logo.png" style="height: 100px;">
+    </a>
+    <ul class="navbar-nav mx-auto ml-auto">
+        <li class="nav-item">
+            <a class="nav-link mx-5" routerLink="/home" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mx-5" routerLink="/projects" routerLinkActive="active">Proyectos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mx-5" routerLink="/private" routerLinkActive="active">Mis Proyectos</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link mx-5" routerLink="/nosotros">Nosotros</a>
+        </li>
+
+        <div class="d-grid gap-2 d-md-flex " *ngIf="!authService.loggedIn(); else loggedIn">
+            
+            <button class="btn bg-color ml-5 mr-3 my-2 my-sm-0 rounded-pill btn-sm" type="button" routerLink="/signin" routerLinkActive="active">
+                Iniciar Sesion
+            </button>
+        
+            <button class="btn bg-color2 mr-5 my-2 my-sm-0 rounded-pill btn-sm" type="button" routerLink="/signup" routerLinkActive="active">
+                Registrarse
+            </button>
+
+         
+    </div>
+    <ng-template #loggedIn>
+        <form class="form-inline">
+            <button class="btn bg-color btn-outline-dark mx-5 my-2 my-sm-0 rounded-pill btn-sm" type="button" (click)="authService.logout()">
+                Cerrar Sesion
+            </button>
+        </form>
+      
+    </ng-template>
+    </ul>
+    
+       
+       
+</nav>
+
+
+
+

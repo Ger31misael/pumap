@@ -1,0 +1,57 @@
+<div class="container"> 
+  <div class="row">
+      <div class="col-md-5">
+          <ul class="list-group">
+              <h5 class="card-title mb-3">Agregar Proyectos</h5> 
+             
+          </ul>
+
+      <div class="center mb-3">
+              <label  class="form-label">Nombre del Proyecto</label>
+              <input type="text" [(ngModel)]="selectedProject.name" class="form-control"  placeholder="nombre">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Nombre de la Empresa</label>
+              <input type="text" [(ngModel)]="selectedProject.business" class="form-control"  placeholder="nombre de empresa">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Requerimientos</label>
+              <textarea [(ngModel)]="selectedProject.request" class="form-control"  rows="3" placeholder="Ingrese los Requerimientos">
+              </textarea>
+            </div>  
+
+            
+            <div  class="d-grid gap-2 d-md-flex justify-content-md-beginning">
+              <button (click)="AddOrEdit()" type="button" class="btn btn-primary">
+                  Enviar
+              </button>
+
+                
+              <button 
+              *ngIf= "selectedProject.id !== 0"
+              type="button" class="btn btn-danger"
+              (click)="delete()">
+                  Borrar
+              </button>
+
+            </div>
+
+      </div>
+      <div class="col-md-6">
+        <li class="list-group-item list-group-item-action"
+                  *ngFor="let project of projectArray"
+                  
+                  (click)="OpenForEdit(project)"
+                  [class.active]="project == selectedProject"
+                  >
+                  <span class="badge bg-primary text-start">{{project.id}}</span>  {{project.name}}
+                  <p class="badge bg-primary text-start">{{project.business}}</p>
+                  <p class="text-break text-start">{{project.request}}</p>
+                 
+                  </li>
+      </div>
+
+  </div>
+</div>
